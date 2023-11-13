@@ -6,11 +6,12 @@ This file was created to record my activity and changes in this Spring Project(p
 1. Settings   
    1.1. Develop Environment   
    1.2. External Libraries   
-   1.3. Others   
+   1.3. Others
 
 2. Records   
    2.1. What I learned   
    2.2. What I did
+   2.3. What I solved(errors, etc.)
 
 3. References   
     3.1. Book
@@ -73,6 +74,21 @@ page: 402~412.p
 ***
 
 
+### 2.3. What I solved
+#### 2.3.1. *Errors*
+- git push시 unable to read askpass response from ... 에러   
+  --> Settings -> Git -> 'Use Credential Helper' 옵션 On
+   
+- 'application.properties' 파일 내 한글 문자에 Unsupported characters for the charset 'iso-8859-1' 에러
+  --> Settings -> Editor -> File Encodings -> 'Transparent native-to-ascii conversion' 옵션 On
+
+#### 2.3.2 Git
+- How to merge master branch to main branch
+  1. git checkout master
+  2. git branch main master -f
+  3. git checkout main
+  4. git push origin main -f
+  (source: https://velog.io/@lecharl/master-main-강제-병합)
 
 ## 3. References
 ### 3.1. Books
