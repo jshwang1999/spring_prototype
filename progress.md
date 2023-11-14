@@ -82,6 +82,8 @@ page: 402~412.p
 - 'application.properties' 파일 내 한글 문자에 Unsupported characters for the charset 'iso-8859-1' 에러
   --> Settings -> Editor -> File Encodings -> 'Transparent native-to-ascii conversion' 옵션 On
 
+- @GetMapping("/hello") 작성 후 url에 localhost:8080/hello 입력 시  whitelabel error가 뜨는 에러   
+  --> Controller와 Application 파일(main())을 같은 패키지에 위치시키기
 #### 2.3.2 Git
 - How to merge master branch to main branch
   1. git checkout master
