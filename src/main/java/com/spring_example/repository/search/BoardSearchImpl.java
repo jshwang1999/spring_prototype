@@ -23,7 +23,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
 
         QBoard board = QBoard.board;
 
-        JPQLQuery<Board> query = from(board);
+        JPQLQuery<Board> query = from(board); // select * from board;
 
         BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
 
