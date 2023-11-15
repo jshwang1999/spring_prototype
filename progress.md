@@ -72,6 +72,15 @@ page: 402~412.p
 ***
 #### 2023.11.14(Tue)
 ***
+1. Learned about Spring Boot(Chapter 5)
+
+
+
+
+***
+#### 2023.11.15(Wed)
+***
+1. 432.p~
 
 
 ### 2.3. What I solved
