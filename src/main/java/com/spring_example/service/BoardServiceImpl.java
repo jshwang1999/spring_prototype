@@ -33,7 +33,9 @@ public class BoardServiceImpl implements BoardService{
 
         Board board = modelMapper.map(boardDTO, Board.class);
 
-        return boardRepository.save(board).getBno();
+        Long bno = boardRepository.save(board).getBno();
+
+        return bno;
     }
 
     @Override
@@ -78,7 +80,8 @@ public class BoardServiceImpl implements BoardService{
         Page<Board> result = boardRepository.searchAll(types, keyword, pageable);
 
         List<BoardDTO> dtoList = result.getContent().stream()
-                .map(board -> modelMapper.map(board,BoardDTO.class)).collect(Collectors.toList());
+                .map(board -> modelMapper.map(board,BoardDTO.class))
+                .collect(Collectors.toList());
 
 
         return PageResponseDTO.<BoardDTO>withAll()

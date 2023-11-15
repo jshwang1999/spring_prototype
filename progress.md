@@ -80,7 +80,8 @@ page: 402~412.p
 ***
 #### 2023.11.15(Wed)
 ***
-1. 432.p~
+1. Part 5 Chapter 1 ~ 4까지 완료
+2. 게시글 작성(register), 게시글 조회(read), 게시글 수정(modify), 게시글 삭제(remove) 기능 구현 완료 
 
 
 ### 2.3. What I solved

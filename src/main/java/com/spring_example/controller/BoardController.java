@@ -46,8 +46,8 @@ public class BoardController {
         log.info("board POST register.......");
 
         if(bindingResult.hasErrors()) {
-            log.info("has errors.......");
-            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+            log.info("오류 발생.......");
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
             return "redirect:/board/register";
         }
 
@@ -59,19 +59,6 @@ public class BoardController {
 
         return "redirect:/board/list";
     }
-
-
-//    @GetMapping("/read")
-//    public void read(Long bno, PageRequestDTO pageRequestDTO, Model model){
-//
-//        BoardDTO boardDTO = boardService.readOne(bno);
-//
-//        log.info(boardDTO);
-//
-//        model.addAttribute("dto", boardDTO);
-//
-//    }
-
 
     @GetMapping({"/read", "/modify"})
     public void read(Long bno, PageRequestDTO pageRequestDTO, Model model){
@@ -90,10 +77,10 @@ public class BoardController {
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes){
 
-        log.info("board modify post......." + boardDTO);
+        log.info("게시글 수정 POST......." + boardDTO);
 
         if(bindingResult.hasErrors()) {
-            log.info("has errors.......");
+            log.info("수정 중 오류 발생.......");
 
             String link = pageRequestDTO.getLink();
 
