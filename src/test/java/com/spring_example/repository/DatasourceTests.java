@@ -21,10 +21,10 @@ public class DatasourceTests {
     public void testConnection() throws SQLException{
 
         @Cleanup
-        Connection conn = dataSource.getConnection();
+        Connection con = dataSource.getConnection();
 
-        log.info(conn);
-        Assertions.assertNotNull(conn);
+        log.info(con);
+        Assertions.assertNotNull(con);
 
     }
 }
