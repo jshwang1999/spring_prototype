@@ -1,4 +1,4 @@
-package com.spring_example.spring_example;
+package com.spring_example.repository;
 
 import lombok.Cleanup;
 import lombok.extern.log4j.Log4j2;
