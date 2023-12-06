@@ -1,5 +1,6 @@
 package com.spring_example.controller;
 
+import com.spring_example.dto.BoardListReplyCountDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring_example.dto.BoardDTO;
 import com.spring_example.dto.PageRequestDTO;
@@ -16,7 +18,7 @@ import com.spring_example.service.BoardService;
 
 import jakarta.validation.Valid;
 
-@Controller
+@RestController
 @RequestMapping("/board")
 @Log4j2
 @RequiredArgsConstructor
@@ -27,12 +29,14 @@ public class BoardController {
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model){
 
-        PageResponseDTO<BoardDTO> responseDTO = boardService.list(pageRequestDTO);
+        //PageResponseDTO<BoardDTO> responseDTO = boardService.list(pageRequestDTO);
+
+        PageResponseDTO<BoardListReplyCountDTO> responseDTO =
+                boardService.listWithReplyCount(pageRequestDTO);
 
         log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
-
     }
 
     @GetMapping("/register")

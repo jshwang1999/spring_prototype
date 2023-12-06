@@ -1,5 +1,6 @@
 package com.spring_example.service;
 
+import com.spring_example.dto.BoardListReplyCountDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -45,7 +46,9 @@ public class BoardServiceImpl implements BoardService{
 
         Board board = result.orElseThrow();
 
-        return modelMapper.map(board, BoardDTO.class);
+        BoardDTO boardDTO = modelMapper.map(board, BoardDTO.class);
+
+        return boardDTO;
     }
 
     @Override
@@ -68,7 +71,17 @@ public class BoardServiceImpl implements BoardService{
 
     }
 
-
+//    @Override
+//    public PageResponseDTO<BoardDTO> list(PageRequestDTO pageRequestDTO) {
+//
+//        String[] types = pageRequestDTO.getTypes();
+//        String keyword = pageRequestDTO.getKeyword();
+//        Pageable pageable = pageRequestDTO.getPageable("bno");
+//
+//        Page<Board> result = boardRepository.searchAll(types, keyword, pageable);
+//
+//        return null;
+//    }
 
     @Override
     public PageResponseDTO<BoardDTO> list(PageRequestDTO pageRequestDTO) {
@@ -80,8 +93,7 @@ public class BoardServiceImpl implements BoardService{
         Page<Board> result = boardRepository.searchAll(types, keyword, pageable);
 
         List<BoardDTO> dtoList = result.getContent().stream()
-                .map(board -> modelMapper.map(board,BoardDTO.class))
-                .collect(Collectors.toList());
+                .map(board -> modelMapper.map(board,BoardDTO.class)).collect(Collectors.toList());
 
 
         return PageResponseDTO.<BoardDTO>withAll()
@@ -90,6 +102,22 @@ public class BoardServiceImpl implements BoardService{
                 .total((int)result.getTotalElements())
                 .build();
 
+    }
+
+    @Override
+    public PageResponseDTO<BoardListReplyCountDTO> listWithReplyCount(PageRequestDTO pageRequestDTO) {
+
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable("bno");
+
+        Page<BoardListReplyCountDTO> result = boardRepository.searchWithReplyCount(types, keyword, pageable);
+
+        return PageResponseDTO.<BoardListReplyCountDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(result.getContent())
+                .total((int)result.getTotalElements())
+                .build();
     }
 
 
